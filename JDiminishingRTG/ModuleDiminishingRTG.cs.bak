@@ -5,6 +5,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 
@@ -239,16 +240,17 @@ namespace JDiminishingRTG
         {
             this.updateFuelSetup(this.fuelSelectorIndex);
         }
- 
+
         private void updateFuelSetup(int index)
         {
             for (int i1 = RTGFuelConfigList.Count - 1; i1 >= 0; i1--)
             {
                 RTGFuelConfig possibleFuel = RTGFuelConfigList[i1];
                 var resources = this.part.Resources;
-                for (int i = this.part.Resources.Count - 1; i >= 0; i--)
+                int i = 0;
+                while (i < resources.Count - 1 /*resources[i] != null */)
                 {
-                    PartResource r = this.part.Resources[i];
+                    PartResource r = resources[i];
                     if (r.resourceName == possibleFuel.resourceName)
                     {
                         resources.Remove(r);

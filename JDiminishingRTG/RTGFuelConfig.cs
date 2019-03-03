@@ -2,7 +2,7 @@
  * Copyright Jake "KwirkyJ" Smith) <kwirkyj.smith0@gmail.com>
  * 
  * Available for use under the LGPL v3 license.
- */ 
+ */
 using System;
 using UnityEngine;
 
@@ -11,33 +11,46 @@ namespace JDiminishingRTG
     public class RTGFuelConfig
     {
         public string resourceName { get; private set; }
-        public float  halflife     { get; private set; }
-        public float  pep          { get; private set; }
-        public float  density      { get; private set; }
-        
-        private static float DEFAULT_PEP      =   0;
+        public string resourceAbbr { get; private set; }
+        public float halflife { get; private set; }
+        public float pep { get; private set; }
+        public float density { get; private set; }
+
+        private static float DEFAULT_PEP = 0;
         private static float DEFAULT_HALFLIFE = 100;
 
-        public RTGFuelConfig (ConfigNode node)
+        public RTGFuelConfig(ConfigNode node)
         {
-            if (!node.HasValue ("name")) {
-                throw new FormatException ("RTGFuelConfig node lacking 'name'");
+            if (!node.HasValue("name"))
+            {
+                throw new FormatException("RTGFuelConfig node lacking 'name'");
             }
-            this.resourceName = node.GetValue ("name");
+            this.resourceName = node.GetValue("name");
+
             ConfigNode resource_node = getResourceConfigNode(this.resourceName);
-            if (resource_node == null) {
-                throw new MissingFieldException ("resource '" + this.resourceName + "' not matched in gamedatabase");
+            if (resource_node == null)
+            {
+                throw new MissingFieldException("resource '" + this.resourceName + "' not matched in gamedatabase");
             }
-            this.density  = float.Parse (resource_node.GetValue ("density"));
-            this.halflife = (node.HasValue ("halflife")) ? float.Parse (node.GetValue ("halflife"))
+            this.density = float.Parse(resource_node.GetValue("density"));
+            this.halflife = (node.HasValue("halflife")) ? float.Parse(node.GetValue("halflife"))
                                                          : DEFAULT_HALFLIFE;
-            this.pep = (node.HasValue ("pep")) ? 1000F * float.Parse (node.GetValue ("pep"))
+            this.pep = (node.HasValue("pep")) ? 1000F * float.Parse(node.GetValue("pep"))
                                                : DEFAULT_PEP;
+
+            if (resource_node.HasValue("abbreviation"))
+                this.resourceAbbr = resource_node.GetValue("abbreviation");
+            else
+                this.resourceAbbr = this.resourceName;
+            Log.Info("Resource name: " + resourceName + ", Abbreviation:" + resourceAbbr);
         }
-        
-        private static ConfigNode getResourceConfigNode(string name) {
-            foreach (ConfigNode r in GameDatabase.Instance.GetConfigNodes("RESOURCE_DEFINITION")) {
-                if (r.GetValue ("name") == name) {
+
+        private static ConfigNode getResourceConfigNode(string name)
+        {
+            foreach (ConfigNode r in GameDatabase.Instance.GetConfigNodes("RESOURCE_DEFINITION"))
+            {
+                if (r.GetValue("name") == name)
+                {
                     return r;
                 }
             }

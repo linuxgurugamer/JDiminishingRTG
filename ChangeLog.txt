@@ -1,0 +1,6 @@
+0.1.5
+	Adoption by Linuxgurugamer
+	Fixed ArgumentOutOfRangeException in OnStart
+	Chagned all "foreach" to a "for int...."
+	Added missing fields to Resources
+	Changed display of fuel type to abbreviation when selecting fuel type
