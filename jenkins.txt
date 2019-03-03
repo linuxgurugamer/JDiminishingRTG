@@ -34,8 +34,8 @@
 
 # 3:SOURCEFILE, DESTDIR
 3:JDiminishingRTG.version,GameData/JDiminishingRTG
-3:LICENSE.txt,GameData/KerbalHotSeat
-3:README.md,GameData/KerbalHotSeat
+3:LICENSE.txt,GameData/JDiminishingRTG
+3:README.md,GameData/JDiminishingRTG
 
 
 #
