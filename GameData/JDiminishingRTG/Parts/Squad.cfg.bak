@@ -1,4 +1,4 @@
-@PART[rtg]:NEEDS[JDiminishingRTG]
+@PART[rtg]:FOR[JDiminishingRTG]
 {
     @description = By exploiting the 'natural' decay of radiological isotopes, electrical power can be generated for prolonged durations—indeed, indefinitely, but the output tends to fall off over time. Accountants have also noted that different 'hot rocks' are hotter or cooler than others and tend to cool down a different rates, with the two aspects not necessarily being related.
     !MODULE[ModuleGenerator] {}

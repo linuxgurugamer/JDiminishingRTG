@@ -97,10 +97,10 @@ namespace JDiminishingRTG
             if (!AreConfigsRead)
             {
                 ReadCustomConfigs();
-                Log.Info("Before ");
                 PopulateFuelNames();
                 AreConfigsRead = true;
             }
+
             if (HighLogic.LoadedScene == GameScenes.EDITOR)
             {
                 UI_Control c = this.Fields["fuelSelectorIndex"].uiControlEditor;
@@ -120,7 +120,7 @@ namespace JDiminishingRTG
 
         private static void PopulateFuelNames()
         {
-            Log.Info("PopulateFuelNames");
+
             string[] names = new string[RTGFuelConfigList.Count];
             for (int i = RTGFuelConfigList.Count - 1; i >= 0; i--)
             {
@@ -253,11 +253,6 @@ namespace JDiminishingRTG
                     if (r.resourceName == possibleFuel.resourceName)
                     {
                         resources.Remove(r);
-                        //Destroy (r);
-                    }
-                    else
-                    {
-                        i++;
                     }
                 }
             }

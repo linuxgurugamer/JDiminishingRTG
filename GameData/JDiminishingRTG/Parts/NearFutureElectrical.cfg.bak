@@ -1,4 +1,4 @@
-@PART[rtg-0625]:NEEDS[JDiminishingRTG]
+@PART[rtg-0625]:FOR[JDiminishingRTG]
 {
   !MODULE[ModuleGenerator] {}
   MODULE

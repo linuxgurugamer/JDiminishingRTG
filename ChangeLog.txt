@@ -4,3 +4,6 @@
 	Chagned all "foreach" to a "for int...."
 	Added missing fields to Resources
 	Changed display of fuel type to abbreviation when selecting fuel type
+
+TODO
+	Have power generation be connected to heat, hotter it is, lower power generated
