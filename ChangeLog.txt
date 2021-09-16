@@ -1,5 +1,9 @@
 ChangeLog
 
+1.6.1.1
+	Added AssemblyFileVersion
+	Updated version file for 1.12
+
 1.6.1
 	Updated for KSP 1.8
 
